@@ -15,7 +15,7 @@ public class SecondTest {
 
         // Ініціалізація веб-драйвера
         WebDriver driver = new ChromeDriver();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20)); // Явное ожидание на 10 секунд
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20)); // Явное ожидание на 20 секунд
 
         // Відкриття сторінки
         driver.get("https://demoqa.com/webtables");
@@ -47,7 +47,7 @@ public class SecondTest {
         WebElement submitButton = driver.findElement(By.id("submit"));
         submitButton.click();
 
-        // Добавлено явное ожидание после добавления записи
+        // Очікування після додавання запису
         wait.until(ExpectedConditions.urlToBe("https://demoqa.com/webtables"));
 
         // Перевірка, що запис додався
