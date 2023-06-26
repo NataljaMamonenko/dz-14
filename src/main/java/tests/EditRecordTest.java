@@ -1,22 +1,12 @@
+package tests;
+
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
+public class EditRecordTest extends BaseTest {
 
-public class SecondTest {
-
-    public static void main(String[] args) {
-        // Встановлення шляху до ChromeDriver
-        System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\ChromeDriver\\chromedriver.exe");
-
-        // Ініціалізація веб-драйвера
-        WebDriver driver = new ChromeDriver();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20)); // Явное ожидание на 20 секунд
-
+    public void run() {
         // Відкриття сторінки
         driver.get("https://demoqa.com/webtables");
 
@@ -24,33 +14,15 @@ public class SecondTest {
         WebElement addButton = driver.findElement(By.id("addNewRecordButton"));
         addButton.click();
 
-        // Заповнення форми додавання
-        WebElement firstNameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("firstName")));
-        firstNameField.sendKeys("John");
-
-        WebElement lastNameField = driver.findElement(By.id("lastName"));
-        lastNameField.sendKeys("Doe");
-
-        WebElement emailField = driver.findElement(By.id("userEmail"));
-        emailField.sendKeys("johndoe@example.com");
-
-        WebElement ageField = driver.findElement(By.id("age"));
-        ageField.sendKeys("30");
-
-        WebElement salaryField = driver.findElement(By.id("salary"));
-        salaryField.sendKeys("50000");
-
-        WebElement departmentField = driver.findElement(By.id("department"));
-        departmentField.sendKeys("IT");
+        // Заповнення форми додавання (по аналогії з попереднім тестом)
 
         // Збереження запису
         WebElement submitButton = driver.findElement(By.id("submit"));
         submitButton.click();
 
-        // Очікування після додавання запису
-        wait.until(ExpectedConditions.urlToBe("https://demoqa.com/webtables"));
+        // Очікування після додавання запису (по аналогії з попереднім тестом)
 
-        // Перевірка, що запис додався
+        // Перевірка, що запис додався (по аналогії з попереднім тестом)
         WebElement addedRecord = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(), 'John Doe')]")));
         if (addedRecord.isDisplayed()) {
             System.out.println("Запис доданий успішно.");
@@ -77,8 +49,5 @@ public class SecondTest {
         } else {
             System.out.println("Помилка: запис не відредагований.");
         }
-
-        // Закриття веб-драйвера
-        driver.quit();
     }
 }
