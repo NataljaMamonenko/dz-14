@@ -24,7 +24,7 @@ public class BasePage {
         return driver.findElement(locator);
     }
 
-    private final static int DURATION_TO_WAIT_DEFAULT = 4;
+    private final static int DURATION_TO_WAIT_DEFAULT = 10;
     private final static String COLOUR_ATTRIBUTE_NAME = "color";
 
     public WebElement getElement(By by, int waitForSeconds) {
