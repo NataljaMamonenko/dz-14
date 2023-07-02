@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 public class ButtonsPage extends BasePage {
     private By clickMeButtonLocator = By.xpath("//button[text()='Click Me']");
-    public By messageElementLocator = By.id("dynamicClickMessage");
+    private By messageElementLocator = By.id("dynamicClickMessage");
 
     public ButtonsPage(WebDriver driver) {
         super(driver);
@@ -17,8 +17,12 @@ public class ButtonsPage extends BasePage {
         clickMeButton.click();
     }
 
+    public WebElement getMessageElementLocator() {
+        return findElement(messageElementLocator);
+    }
+
     public String getMessage() {
-        WebElement messageElement = findElement(messageElementLocator);
+        WebElement messageElement = getMessageElementLocator();
         return messageElement.getText();
     }
 }

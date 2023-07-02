@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Configuration.baseUrl;
 public class WebTablesPage extends BasePage {
 
     private By addNewRecordButton = By.id("addNewRecordButton");
-    private By firstNameField  = By.id("firstName");
+    private By firstNameField = By.id("firstName");
     private By lastNameField = By.id("lastName");
     private By userEmailField = By.id("userEmail");
     private By ageField = By.id("age");
@@ -29,14 +29,15 @@ public class WebTablesPage extends BasePage {
 
     public WebTablesPage openWebTablesPage() {
         driver.get(baseUrl + "/webtables");
-        return new WebTablesPage(driver);
+        return this;
     }
 
-public WebTablesPage clickOnAddNewRecordButton() {
+    public WebTablesPage clickAddNewRecordButton() {
         getElement(addNewRecordButton).click();
         return this;
     }
-public WebTablesPage fillNewRecordForm(String firstName, String lastName, String email, String age, String salary, String department) {
+
+    public WebTablesPage fillNewRecordForm(String firstName, String lastName, String email, String age, String salary, String department) {
         getElement(firstNameField).sendKeys(firstName);
         getElement(lastNameField).sendKeys(lastName);
         getElement(userEmailField).sendKeys(email);
@@ -46,10 +47,9 @@ public WebTablesPage fillNewRecordForm(String firstName, String lastName, String
         getElement(submitRecordButton).click();
         return this;
     }
-public WebTablesPage assertUserIsAddedInTables(String email) {
-        Assert.assertTrue(getElement(userRecordXpath(email)).isDisplayed(),"Record was not found for email =" + email);
+
+    public WebTablesPage assertUserIsDisplayed(String email) {
+        Assert.assertTrue(getElement(userRecordXpath(email)).isDisplayed(), "Record was not found for email = " + email);
         return this;
     }
 }
-
-

@@ -7,13 +7,13 @@ public class AddRecordTest extends BaseTest {
 
     @Test
     public void addNewRecordTest() {
-        String userEmail = "johndoe@google.com";
-       
-       new WebTablesPage(driver)
-            .openWebTablesPage()
-            .clickOnAddNewRecordButton()
-            .fillNewRecordForm("Doe", "John", "johndoe@gooogle.com", "30", "50000", "IT")
-            .assertUserIsAddedInTables(userEmail);
+        String userEmail = "johndoe@gmail.com";
 
+        new WebTablesPage(driver)
+                .openWebTablesPage()
+                .clickAddNewRecordButton()
+                .fillNewRecordForm("Doe", "John", "johndoe@gmail.com", "30", "50000", "IT")
+                .assertUserIsDisplayed(userEmail);
     }
 }
+
