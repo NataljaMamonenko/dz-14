@@ -44,7 +44,7 @@ public class ButtonsTest {
     public void testButtonClickWithWait() {
         buttonsPage.clickClickMeButton();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.textToBePresentInElement(buttonsPage.findElement(buttonsPage.messageElementLocator), "You have done a dynamic click")); // Использование метода findElement из класса ButtonsPage
+        wait.until(ExpectedConditions.textToBePresentInElement(buttonsPage.findElement(buttonsPage.messageElementLocator), "You have done a dynamic click"));
         String message = buttonsPage.getMessage();
         Assert.assertEquals(message, "You have done a dynamic click");
     }
