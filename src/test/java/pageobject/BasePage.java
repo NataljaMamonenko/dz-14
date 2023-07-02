@@ -20,17 +20,18 @@ public class BasePage {
 
     public BasePage(WebDriver driver) { this.driver = driver; }
 
-    protected WebElement findElement(By locator) {
+    public WebElement findElement(By locator) {
         return driver.findElement(locator);
     }
 
     private final static int DURATION_TO_WAIT_DEFAULT = 10;
     private final static String COLOUR_ATTRIBUTE_NAME = "color";
 
-    public WebElement getElement(By by, int waitForSeconds) {
+    public WebElement getElement(By by, long waitForSeconds) {
         return new WebDriverWait(driver, Duration.ofSeconds(waitForSeconds))
                 .until(ExpectedConditions.presenceOfElementLocated(by));
     }
+
 
     public WebElement getElement(final By by) {
         return new WebDriverWait(driver, Duration.ofSeconds(DURATION_TO_WAIT_DEFAULT))
